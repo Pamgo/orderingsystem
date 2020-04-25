@@ -1,12 +1,17 @@
 spring:
+  ##############本地配置中心配置文件方式
+  application:
+    name: order
+  profiles:
+    active: dev
+#################本地配置中心配置文件方式end#########
   cloud:
     config:
-      name: order #对应的配置文件名称
-      label: master #git仓库分支名
-      discovery:
-        enabled: true
-        serviceId: configserver #连接的配置中心名称
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+  #    name: order #对应的配置文件名称
+  #    label: master #git仓库分支名
+  #    discovery:
+  #      enabled: true
+  #      serviceId: configserver #连接的配置中心名称
+    #############本地配置中心配置方式
+      uri: http://localhost:8888
+      fail-fast: true
