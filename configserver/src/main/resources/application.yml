@@ -3,19 +3,30 @@ server:
 spring:
   application:
     name: configserver
+  profiles:
+    active: native
+#################本地配置#########
   cloud:
-    bus:
-      trace:
-        enable: true
     config:
       server:
-        git:
-          uri: https://github.com/southwind9801/orderingsystem.git #git仓库地址
-          searchPaths: config #仓库路径
-          username: root #git仓库用户名
-          password: root #git仓库密码
-      label: master #仓库的分支
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+        native:
+          search-locations: classpath:/shared
+################git配置##########
+  #cloud:
+  #  bus:
+  #    trace:
+  #      enable: true
+  #  config:
+  #    server:
+  #      git:
+  #        uri: https://github.com/southwind9801/orderingsystem.git #git仓库地址
+  #        searchPaths: config #仓库路径
+  #        username: root #git仓库用户名
+  #        password: root #git仓库密码
+  #    label: master #仓库的分支
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: true
